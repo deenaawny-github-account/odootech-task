@@ -47,10 +47,10 @@ This project provides a tool to read, clean, and compare price lists from variou
 ## Usage
 
 1. **Compare Price Lists**:
-    - Update the `file1` and `file2` variables in the `if __name__ == "__main__":` block of `price_list_comparison.py` with the paths to the price lists you want to compare.
+    - There are two sample files file1.csv and file2.csv
     - Run the script:
       ```sh
-      python price_list_comparison.py
+      python price_list_comparison.py file1.csv file2.cvs
       ```
 
 2. **Generate PDF Reports**:
