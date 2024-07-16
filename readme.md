@@ -62,7 +62,7 @@ This project provides a tool to read, clean, and compare price lists from variou
 
 1. **Run the tests**:
     ```sh
-    python -m unittest discover
+    python -m unittest test_price_list_comparison.py
     ```
     Note: the test data creation functions in `test_price_list_comparison.py` correctly generate the necessary sample files.
 
