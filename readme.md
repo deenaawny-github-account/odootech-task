@@ -42,7 +42,8 @@ This project provides a tool to read, clean, and compare price lists from variou
       ```
       OPENAI_API_KEY=your_openai_api_key
       ```
-
+     - Run
+       pip install python-dotenv
 ## Usage
 
 1. **Compare Price Lists**:
