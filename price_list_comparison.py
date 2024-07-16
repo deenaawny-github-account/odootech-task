@@ -4,6 +4,14 @@ import os
 import openai
 from io import StringIO
 from fpdf import FPDF
+from dotenv import load_dotenv
+
+
+# Load environment variables from .env file
+load_dotenv()
+
+# Set the OpenAI API key
+openai.api_key = os.getenv('OPENAI_API_KEY')
 
 def read_text_from_file(file_path):
     """
@@ -103,7 +111,6 @@ def clean_data(df):
     return df
 
 def compare_price_lists(file1, file2):
-    openai.api_key = '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'
     text1, df1 = read_text_from_file(file1)
     text2, df2 = read_text_from_file(file2)
 
@@ -188,3 +195,27 @@ def generate_pdf(df, file_name):
     
     # Save the PDF
     pdf.output(file_name)
+
+def main(file1, file2):
+    changed_prices, new_products, obsolete_products = compare_price_lists(file1, file2)
+
+    # Convert lists to DataFrames
+    df_changed_prices = pd.DataFrame(changed_prices, columns=['Product Item Code'])
+    df_new_products = pd.DataFrame(new_products, columns=['Product Item Code'])
+    df_obsolete_products = pd.DataFrame(obsolete_products, columns=['Product Item Code'])
+
+    # Generate PDFs
+    generate_pdf(df_changed_prices, 'changed_prices.pdf')
+    generate_pdf(df_new_products, 'new_products.pdf')
+    generate_pdf(df_obsolete_products, 'obsolete_products.pdf')
+
+if __name__ == "__main__":
+    import sys
+    if len(sys.argv) != 3:
+        print("Usage: python script.py <file1> <file2>")
+        sys.exit(1)
+    
+    file1 = sys.argv[1]
+    file2 = sys.argv[2]
+    
+    main(file1, file2)
