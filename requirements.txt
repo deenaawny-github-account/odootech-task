@@ -1,0 +1,6 @@
+pandas
+PyMuPDF
+openai
+fpdf
+python-dotenv
+unittest
