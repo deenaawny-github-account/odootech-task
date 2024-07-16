@@ -60,13 +60,11 @@ This project provides a tool to read, clean, and compare price lists from variou
 
 ## Running Tests
 
-1. **Create test data**:
-    - Ensure the test data creation functions in `test_price_list_comparison.py` are correctly generating the necessary sample files.
-
-2. **Run the tests**:
+1. **Run the tests**:
     ```sh
     python -m unittest discover
     ```
+    Note: the test data creation functions in `test_price_list_comparison.py` correctly generate the necessary sample files.
 
 ## Project Structure
 
